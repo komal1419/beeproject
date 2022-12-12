@@ -1,0 +1,26 @@
+<html>
+  <head> </head>
+  <body>
+    <p>This is GET api testing</p>
+    <input type="number" id="todo_id" />
+    <button onclick="getTodoData();">GET DATA</button>
+
+    <script>
+      const getTodoData = () => {
+        var id = document.getElementById("todo_id").value;
+        var queryString = "?";
+        if (id) {
+          queryString += `id=${id}`;
+        }
+        var apiUrl = `http://localhost:4000/todo${queryString}`;
+        fetch(apiUrl)
+          .then((data) => {
+            return data.json();
+          })
+          .then((todo) => {
+            console.log(todo);
+          });
+      };
+    </script>
+  </body>
+</html>
